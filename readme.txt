@@ -22,7 +22,7 @@ A sample configuration:
  */
 define('WP_SMTP_HOST',       'mail.example.com');
 define('WP_SMTP_PORT',       25);                   // obligatory - default: 25
-define('WP_SMTP_ENCRYPTION', 'tls');                // obligatory: 'tls' or 'ssl' - default: no encryption
+define('WP_SMTP_ENCRYPTION', 'tls');                // obligatory ('tls' or 'ssl') - default: no encryption
 define('WP_SMTP_USER',       'username');           // obligatory - default: no user
 define('WP_SMTP_PASSWORD',   'password');           // obligatory - default: no password
 `
@@ -38,7 +38,7 @@ define('WP_SMTP_PASSWORD',   'password');           // obligatory - default: no 
 
 = Where is my SMTP settings page? =
 
-The configuration of the SMTP server has to be placed in your `wp-config.php` file.
+The configuration of the SMTP server credentials will be placed in your `wp-config.php` file.
 You can test your configuration in `Settings -> SMTP`.
 If you ar running a MU installation you will find this settings page in your network settings.
 
