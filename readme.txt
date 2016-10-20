@@ -2,8 +2,10 @@
 Contributors: pCoLaSD
 Tags: email, mail, phpmailer, smtp, ssl, tls, wp_mail
 Requires at least: 3.0
-Tested up to: 3.3
-Stable tag: 1.0
+Tested up to: 4.6.1
+Stable tag: 1.1.0
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Configure an external SMTP server in your config file.
 
@@ -21,10 +23,11 @@ A sample configuration:
  * WordPress SMTP server
  */
 define('WP_SMTP_HOST',       'mail.example.com');
-define('WP_SMTP_PORT',       25);                   // obligatory - default: 25
-define('WP_SMTP_ENCRYPTION', 'tls');                // obligatory ('tls' or 'ssl') - default: no encryption
-define('WP_SMTP_USER',       'username');           // obligatory - default: no user
-define('WP_SMTP_PASSWORD',   'password');           // obligatory - default: no password
+define('WP_SMTP_PORT',       25);                                // obligatory - default: 25
+define('WP_SMTP_ENCRYPTION', 'tls');                             // obligatory ('tls' or 'ssl') - default: no encryption
+define('WP_SMTP_USER',       'username');                        // obligatory - default: no user
+define('WP_SMTP_PASSWORD',   'password');                        // obligatory - default: no password
+define('WP_SMTP_FROM',       'John Doe <john.doe@example.com>'); // obligatory - default: no custom from address
 `
 
 == Installation ==
@@ -43,6 +46,9 @@ You can test your configuration in `Settings -> SMTP`.
 If you ar running a MU installation you will find this settings page in your network settings.
 
 == Changelog ==
+
+= 1.1.0 =
+* Added config for custom from address
 
 = 1.0 =
 * Initial release
