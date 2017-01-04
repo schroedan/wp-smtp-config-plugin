@@ -3,7 +3,7 @@ Contributors: pCoLaSD
 Tags: email, mail, phpmailer, smtp, ssl, tls, wp_mail
 Requires at least: 3.0
 Tested up to: 4.6.1
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,9 @@ You can test your configuration in `Settings -> SMTP`.
 If you ar running a MU installation you will find this settings page in your network settings.
 
 == Changelog ==
+
+= 1.1.1 =
+* Fixed bug with port configuration
 
 = 1.1.0 =
 * Added config for custom from address
