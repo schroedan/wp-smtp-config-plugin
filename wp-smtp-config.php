@@ -3,10 +3,10 @@
  * Plugin Name:     WP SMTP Config
  * Plugin URI:      http://wordpress.org/extend/plugins/wp-smtp-config/
  * Description:     Configure an external SMTP server in your config file.
- * Author:          Daniel Schröder
+ * Author:          Daniel Schröder, holzhannes
  * Author URI:      https://github.com/schroedan
  * License:         GNU General Public License 2.0 (GPL) http://www.gnu.org/licenses/gpl-2.0.html
- * Version:         1.1.1
+ * Version:         1.2.0
  *
  * @package         WP_SMTP_Config
  */
@@ -41,25 +41,33 @@ if ( defined( 'WP_SMTP_HOST' ) && is_string( WP_SMTP_HOST ) ) {
 			}
 		}
 
-		if ( defined( 'WP_SMTP_FROM' ) && preg_match( '/^(?P<name>.+?)(<(?P<from>.*)>)?$/', WP_SMTP_FROM, $matches ) > 0 ) {
-			if ( isset( $matches['from'] ) ) {
-				$phpmailer->FromName = $matches['name'];
-			} else {
-				$matches['from'] = $matches['name'];
+		if ( defined( 'WP_SMTP_REPLYTO' ) && preg_match( '/^(?P<replyname>.+?)(<(?P<replyto>.*)>)?$/', WP_SMTP_REPLYTO, $matches ) > 0 ) {
+			if ( isset( $matches['replyto'] ) && isset( $matches['replyname'] ) && is_email( $matches['replyto'] )) {
+				$phpmailer->AddReplyTo($matches['replyto'], sanitize_text_field($matches['replyname']));
 			}
+			if ( isset( $matches['replyname'] ) && is_email( $matches['replyname'] ) ) {
+				$phpmailer->AddReplyTo($matches['replyname']);
+			}
+		}
 
-			$phpmailer->From = $matches['from'];
+		if ( defined( 'WP_SMTP_FROM' ) && preg_match( '/^(?P<name>.+?)(<(?P<from>.*)>)?$/', WP_SMTP_FROM, $matches ) > 0 ) {
+			if ( isset( $matches['from'] ) && is_email( $matches['from'] ) ) {
+				$phpmailer->SetFrom($matches['from'], sanitize_text_field($matches['name']) );
+			}
+			if ( isset( $matches['name'] ) && is_email( $matches['name'] ) ){
+				$phpmailer->SetFrom($matches['name']);
+			}
 		}
 	}
 
 	add_action( 'phpmailer_init', 'wp_smtp_config_phpmailer_init' );
 
 	function wp_smtp_config_network_admin_menu() {
-		add_submenu_page( 'settings.php', 'SMTP Settings', 'SMTP', 'manage_network_options', 'wp-smtp-config', 'wp_smtp_config_options_page' );
+		add_submenu_page( 'settings.php', 'SMTP Settings', 'SMTP Test', 'manage_network_options', 'wp-smtp-config', 'wp_smtp_config_options_page' );
 	}
 
 	function wp_smtp_config_admin_menu() {
-		add_options_page( 'SMTP Settings', 'SMTP', 'manage_options', 'wp-smtp-config', 'wp_smtp_config_options_page' );
+		add_options_page( 'SMTP Settings', 'SMTP Test', 'manage_options', 'wp-smtp-config', 'wp_smtp_config_options_page' );
 	}
 
 	function wp_smtp_config_options_page_save() {
@@ -127,7 +135,7 @@ if ( defined( 'WP_SMTP_HOST' ) && is_string( WP_SMTP_HOST ) ) {
 		<?php
 	}
 
-	if ( defined( 'MULTISITE' ) && MULTISITE ) {
+	if ( is_multisite() ) {
 		add_action( 'network_admin_menu', 'wp_smtp_config_network_admin_menu' );
 	} else {
 		add_action( 'admin_menu', 'wp_smtp_config_admin_menu' );
