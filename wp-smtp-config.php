@@ -24,7 +24,7 @@ if ( defined( 'WP_SMTP_HOST' ) && is_string( WP_SMTP_HOST ) ) {
 		$phpmailer->isSMTP();
 		$phpmailer->Host = WP_SMTP_HOST;
 
-		if ( defined( 'WP_SMTP_PORT' ) && is_int( WP_SMTP_USER ) ) {
+		if ( defined( 'WP_SMTP_PORT' ) && is_int( WP_SMTP_PORT ) ) {
 			$phpmailer->Port = WP_SMTP_PORT;
 		}
 
