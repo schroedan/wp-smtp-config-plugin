@@ -1,1 +1,4 @@
-dist/
+.DS_Store
+dist
+Thumbs.db
+wp-cli.local.yml

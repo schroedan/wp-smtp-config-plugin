@@ -3,5 +3,7 @@
 .editorconfig
 .git
 .gitignore
+.DS_Store
 build.xml
 dist
+Thumbs.db
