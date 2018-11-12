@@ -1,9 +1,9 @@
 === Plugin Name ===
-Contributors: pCoLaSD
-Tags: email, mail, phpmailer, smtp, ssl, tls, wp_mail
+Contributors: pCoLaSD, holzhannes
+Tags: email, mail, phpmailer, smtp, ssl, tls, wp_mail, wpmu, multisite, network
 Requires at least: 3.0
-Tested up to: 4.6.1
-Stable tag: 1.1.1
+Tested up to: 4.9.8
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,6 +28,7 @@ define('WP_SMTP_ENCRYPTION', 'tls');                             // obligatory (
 define('WP_SMTP_USER',       'username');                        // obligatory - default: no user
 define('WP_SMTP_PASSWORD',   'password');                        // obligatory - default: no password
 define('WP_SMTP_FROM',       'John Doe <john.doe@example.com>'); // obligatory - default: no custom from address
+define('WP_SMTP_REPLYTO',    'Jane Doe <jane.doe@example.com>'); // obligatory - default: no custom reply to address
 `
 
 == Installation ==
@@ -41,11 +42,16 @@ define('WP_SMTP_FROM',       'John Doe <john.doe@example.com>'); // obligatory -
 
 = Where is my SMTP settings page? =
 
-The configuration of the SMTP server credentials will be placed in your `wp-config.php` file.
-You can test your configuration in `Settings -> SMTP`.
-If you ar running a MU installation you will find this settings page in your network settings.
+The configuration of the SMTP server credentials will be placed in your `wp-config.php` file only.
+You can test your configuration in `Settings -> SMTP Test`.
+If you are running a MU installation you will find this settings page for SMTP Test in your network settings.
 
 == Changelog ==
+
+= 1.2.0 =
+* Fixed bug settings page not showing for network admin
+* Added config for custom reply to address
+* Added some security validations
 
 = 1.1.1 =
 * Fixed bug with port configuration
