@@ -6,7 +6,7 @@
  * Author:          Daniel Schröder
  * Author URI:      https://github.com/schroedan
  * License:         GNU General Public License 2.0 (GPL) http://www.gnu.org/licenses/gpl-2.0.html
- * Version:         1.0.0
+ * Version:         1.1.0
  *
  * @package         WP_SMTP_Config
  */
