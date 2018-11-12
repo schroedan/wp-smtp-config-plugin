@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="WP SMTP Config" default="dist">
+	<property name="dist.dir" value="./dist"/>
 
 	<!-- ============================================  -->
 	<!-- Target: dist                                 -->
 	<!-- ============================================  -->
 	<target name="dist">
-		<echo msg="Making dist directory ./dist"/>
-		<delete dir="./dist" quiet="true" includeemptydirs="true"/>
-		<mkdir dir="./dist"/>
+		<echo msg="Making dist directory ${dist.dir}"/>
+		<delete dir="${dist.dir}" quiet="true" includeemptydirs="true"/>
+		<mkdir dir="${dist.dir}"/>
 
 		<echo msg="Copying files to dist directory..."/>
-		<copy todir="./dist">
+		<copy todir="${dist.dir}">
 			<fileset dir="." excludesfile=".distignore"/>
 		</copy>
 	</target>
